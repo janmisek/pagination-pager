@@ -18,11 +18,19 @@ export default Component.extend({
   countOut: 2,
   countIn: 2,
   firstPage: 1,
-  current: 1,
   urlTemplate: '#',
   firstPageUrlTemplate: null,
   lastPage: alias('count'),
 
+  current: computed({
+    set(k,v) {
+      return parseInt(v);
+    },
+    get(k) {
+      return 1;
+    }
+  }),
+  
   previousUrl: computed('urlTemplate', 'current', 'firstPage', function () {
     let urlTemplate = this.get('urlTemplate');
     let current = this.get('current');
